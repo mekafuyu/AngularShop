@@ -1,0 +1,12 @@
+<h1>Editando {{produtoName}}</h1><br />
+@if (produto == undefined)
+{
+  <h2>Produto não encontrado</h2>
+}
+@else{
+  <input value="{{produto.produto}}" (input)="setProduto($event)" />
+  <input type="number" value="{{produto.quantidade}}" (input)="setQuant($event)" />
+}
+
+
+<button (click)="salvar()">Salvar</button>

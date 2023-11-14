@@ -1,0 +1,66 @@
+<div class="container bg-secondary text-white">
+
+  <table>
+    <tr>
+      Adicionar Produto
+    </tr>
+    <tr>
+      <td>
+        Nome:
+      </td>
+      <td>
+        <input (input)="setProduto($event)"/>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Quantidade:
+      </td>
+      <td>
+        <input type="number" value="0" (input)="setQuant($event)"/>
+      </td>
+    </tr>
+    <tr >
+      <button (click)="addProduct()" class="btn btn-primary" style="width: 100%">Adicionar</button>
+    </tr>
+  </table>
+    
+  <table>
+    <tr>
+      <td colspan="5">
+        <input type="checkbox" (change)="mostrarComprados($event)" />
+        <b>Não mostrar itens já comprados.</b>
+      </td>
+    </tr>
+    @for (item of list; track item.produto)
+    {
+      @if (!item.comprado || mostrarCprds)
+      {
+        <tr>
+          <td>
+            <div style="width: 30px;">
+              <input type="checkbox" [checked]="item.comprado"
+              (change)="markCheckbox($event, item.produto)"/>
+            </div>
+          </td>
+          <td>
+            {{ item.produto }}
+          </td>
+          <td>
+            <div style="width: 30px; align-items: center;">
+              {{ item.quantidade }}
+            </div>
+          </td>
+          <td>
+            <button (click)="editar(item.produto)" class="btn btn-warning">Editar</button>
+          </td>
+          <td>
+            <button (click)="removeProduct(item.produto)" class="btn btn-danger">Remover</button>
+          </td>
+        </tr>
+      }
+    }
+    
+    
+  </table>
+</div>
