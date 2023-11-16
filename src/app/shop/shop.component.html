@@ -21,14 +21,15 @@
       </td>
     </tr>
     <tr >
-      <button (click)="addProduct()" class="btn btn-primary" style="width: 100%">Adicionar</button>
+      
+      <button mat-raised-button color="primary" (click)="addProduct()" style="width: 100%">Adicionar</button>
     </tr>
   </table>
     
   <table>
     <tr>
       <td colspan="5">
-        <input type="checkbox" (change)="mostrarComprados($event)" />
+        <mat-checkbox [(ngModel)]="mostrarCprds"></mat-checkbox>
         <b>Não mostrar itens já comprados.</b>
       </td>
     </tr>
@@ -39,8 +40,7 @@
         <tr>
           <td>
             <div style="width: 30px;">
-              <input type="checkbox" [checked]="item.comprado"
-              (change)="markCheckbox($event, item.produto)"/>
+              <mat-checkbox [(ngModel)]="item.comprado" (ngModelChange)="markCheckbox($event, item.produto)"/>
             </div>
           </td>
           <td>
@@ -52,10 +52,10 @@
             </div>
           </td>
           <td>
-            <button (click)="editar(item.produto)" class="btn btn-warning">Editar</button>
+            <button mat-raised-button color="accent" (click)="editar(item.produto)">Editar</button>
           </td>
           <td>
-            <button (click)="removeProduct(item.produto)" class="btn btn-danger">Remover</button>
+            <button mat-raised-button color="warn" (click)="removeProduct(item.produto)">Remover</button>
           </td>
         </tr>
       }

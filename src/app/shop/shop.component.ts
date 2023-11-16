@@ -3,11 +3,14 @@ import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ShopService } from '../services/shop.service';
 import { Product } from '../model/Product';
+import { MatCheckboxModule } from '@angular/material/checkbox'
+import { MatButtonModule } from '@angular/material/button'
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-shop',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, MatCheckboxModule, MatButtonModule, FormsModule],
   templateUrl: './shop.component.html',
   styleUrl: './shop.component.css'
 })
@@ -38,7 +41,10 @@ export class ShopComponent implements OnInit
   markCheckbox(event: any,produto: string) {
     this.list.map(it => {
       if (it.produto == produto)
-        it.comprado = event.target.checked;
+      {
+        // it.comprado = event.target.checked;
+        console.log(event.target);
+      }
     })
     this.service.setItems(this.list);
     console.log(this.list)
